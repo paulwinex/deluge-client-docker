@@ -1,0 +1,19 @@
+version: '3.4'
+
+
+services:
+  app:
+    image: rpitorrent
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: deluge
+    volumes:
+      - ./config:/config
+      - ./data:/data
+      - ./start.sh:/start.sh
+    ports:
+      - "8080:8080"
+      - "8112:8112"
+      - "58846:58846"
